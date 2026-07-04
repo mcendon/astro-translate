@@ -26,7 +26,7 @@ export function i18n(userI18nConfig: UserI18nConfig): AstroIntegration {
   const { defaultLocale, locales, exclude, include, redirectDefaultLocale } =
     i18nConfig;
 
-  let pagesPathTmp: Record<string, string> = {};
+  const pagesPathTmp: Record<string, string> = {};
   async function removePagesPathTmp(): Promise<void> {
     await Promise.all(
       Object.values(pagesPathTmp).map((pagePathTmp) => fs.remove(pagePathTmp))
@@ -53,11 +53,11 @@ export function i18n(userI18nConfig: UserI18nConfig): AstroIntegration {
 
         const configSrcDirPathname = fileURLToPath(config.srcDir);
 
-        let included: string[] = ensureGlobsHaveConfigSrcDirPathname(
+        const included: string[] = ensureGlobsHaveConfigSrcDirPathname(
           typeof include === "string" ? [include] : include,
           configSrcDirPathname
         );
-        let excluded: string[] = ensureGlobsHaveConfigSrcDirPathname(
+        const excluded: string[] = ensureGlobsHaveConfigSrcDirPathname(
           typeof exclude === "string" ? [exclude] : exclude,
           configSrcDirPathname
         );
@@ -97,7 +97,7 @@ export function i18n(userI18nConfig: UserI18nConfig): AstroIntegration {
         });
         // typing https://stackoverflow.com/a/68358341
         let entry: string;
-        // @ts-expect-error
+        // @ts-expect-error: fast-glob stream does not fully align with for-await typings in this environment
         for await (entry of entries) {
           const parsedPath = path.parse(entry);
           const relativePath = path.relative(pagesPath, parsedPath.dir);

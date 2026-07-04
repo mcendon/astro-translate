@@ -4,23 +4,23 @@ import type { Plugin } from "vite";
 
 export function createVirtualPlugin(
   virtualModuleId: string,
-  json: any
+  json: unknown
 ): Plugin {
   const resolvedVirtualModuleId = "\0" + virtualModuleId;
 
   return {
     name: "vite-plugin:" + virtualModuleId, // required, will show up in warnings and errors
-    // @ts-expect-error
-    resolveId(id) {
+    resolveId(id: string) {
       if (id === virtualModuleId) {
         return resolvedVirtualModuleId;
       }
+      return null;
     },
-    // @ts-expect-error
-    load(id) {
+    load(id: string) {
       if (id === resolvedVirtualModuleId) {
         return `export default ${JSON.stringify(json)}`;
       }
+      return null;
     },
   };
 }
