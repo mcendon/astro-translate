@@ -19,7 +19,7 @@ export function filterSitemapByDefaultLocale({
     const pathNameWithoutHtmlExtension = removeHtmlExtension(pathName);
 
     // remove baseUrlWithoutTrailingSlash from pathNameWithoutBaseUrl
-    let pathNameWithoutBaseUrl =
+    const pathNameWithoutBaseUrl =
       baseUrl === "/"
         ? pathNameWithoutHtmlExtension
         : pathNameWithoutHtmlExtension.replace(baseUrlWithoutTrailingSlash, "");

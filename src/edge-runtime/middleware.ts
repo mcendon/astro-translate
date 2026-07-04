@@ -25,7 +25,7 @@ export const i18nMiddleware = defineMiddleware((context, next) => {
   const baseUrlWithoutTrailingSlash = removeTrailingSlash(baseUrl);
 
   // remove baseUrlWithoutTrailingSlash from pathNameWithoutBaseUrl
-  let pathNameWithoutBaseUrl =
+  const pathNameWithoutBaseUrl =
     baseUrl === "/"
       ? pathNameWithoutHtmlExtension
       : pathNameWithoutHtmlExtension.replace(baseUrlWithoutTrailingSlash, "");

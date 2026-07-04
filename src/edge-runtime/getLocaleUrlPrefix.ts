@@ -26,7 +26,7 @@ export function getLocaleUrlPrefix(url: URL | string): string {
   const baseUrlWithoutTrailingSlash = removeTrailingSlash(baseUrl);
 
   // remove baseUrlWithoutTrailingSlash from pathNameWithoutBaseUrl
-  let pathNameWithoutBaseUrl =
+  const pathNameWithoutBaseUrl =
     baseUrl === "/"
       ? pathNameWithoutHtmlExtension
       : pathNameWithoutHtmlExtension.replace(baseUrlWithoutTrailingSlash, "");
