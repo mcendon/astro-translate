@@ -1,92 +1,92 @@
 {
-  "name": "astro-translate",
-  "version": "1.0.0",
-  "private": false,
-  "description": "The translate integration for Astro",
-  "keywords": [
-    "astro-translate",
-    "astro",
-    "astrojs",
-    "withastro",
-    "astro-integration",
-    "astro-component",
-    "i18n",
-    "locales",
-    "defaultLocale",
-    "languages",
-    "defaultLanguage",
-    "defaultLang",
-    "translate"
-  ],
-  "homepage": "https://github.com/mcendon/astro-translate",
-  "bugs": "https://github.com/mcendon/astro-translate/issues",
-  "repository": "git@github.com:mcendon/astro-translate.git",
-  "license": "MIT",
-  "author": "Mauro Cendón Hidalgo",
-  "sideEffects": false,
-  "type": "module",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/edge-runtime/index.d.ts"
-      ],
-      "integration": [
-        "./dist/integration/index.d.ts"
-      ],
-      "middleware": [
-        "./dist/middleware/index.d.ts"
-      ]
+    "name": "@mcendon/astro-translate",
+    "version": "1.0.0",
+    "private": false,
+    "description": "The translate integration for Astro",
+    "keywords": [
+        "astro-translate",
+        "astro",
+        "astrojs",
+        "withastro",
+        "astro-integration",
+        "astro-component",
+        "i18n",
+        "locales",
+        "defaultLocale",
+        "languages",
+        "defaultLanguage",
+        "defaultLang",
+        "translate"
+    ],
+    "homepage": "https://github.com/mcendon/astro-translate",
+    "bugs": "https://github.com/mcendon/astro-translate/issues",
+    "repository": "git@github.com:mcendon/astro-translate.git",
+    "license": "MIT",
+    "author": "Mauro Cendón Hidalgo",
+    "sideEffects": false,
+    "type": "module",
+    "typesVersions": {
+        "*": {
+            "*": [
+                "./dist/edge-runtime/index.d.ts"
+            ],
+            "integration": [
+                "./dist/integration/index.d.ts"
+            ],
+            "middleware": [
+                "./dist/middleware/index.d.ts"
+            ]
+        }
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/edge-runtime/index.d.ts",
+            "require": "./dist/edge-runtime/index.cjs",
+            "import": "./dist/edge-runtime/index.js"
+        },
+        "./integration": {
+            "types": "./dist/integration/index.d.ts",
+            "require": "./dist/integration/index.cjs",
+            "import": "./dist/integration/index.js"
+        },
+        "./middleware": {
+            "types": "./dist/middleware/index.d.ts",
+            "require": "./dist/middleware/index.cjs",
+            "import": "./dist/middleware/index.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsup-node",
+        "watch": "tsup-node --watch",
+        "lint": "eslint .",
+        "prepare": "husky"
+    },
+    "dependencies": {
+        "dedent": "^1.5.3",
+        "fast-glob": "^3.3.2",
+        "fs-extra": "^11.2.0",
+        "slash": "^5.1.0"
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@types/dedent": "^0.7.2",
+        "@types/fs-extra": "^11.0.4",
+        "@types/node": "^22.10.3",
+        "eslint": "^10.6.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^17.0.8",
+        "tsup": "^8.3.5",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.62.1"
+    },
+    "peerDependencies": {
+        "astro": "^7.0.0"
+    },
+    "lint-staged": {
+        "**/*.{js,ts}": "eslint --max-warnings 0"
     }
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/edge-runtime/index.d.ts",
-      "require": "./dist/edge-runtime/index.cjs",
-      "import": "./dist/edge-runtime/index.js"
-    },
-    "./integration": {
-      "types": "./dist/integration/index.d.ts",
-      "require": "./dist/integration/index.cjs",
-      "import": "./dist/integration/index.js"
-    },
-    "./middleware": {
-      "types": "./dist/middleware/index.d.ts",
-      "require": "./dist/middleware/index.cjs",
-      "import": "./dist/middleware/index.js"
-    },
-    "./package.json": "./package.json"
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsup-node",
-    "watch": "tsup-node --watch",
-    "lint": "eslint .",
-    "prepare": "husky"
-  },
-  "dependencies": {
-    "dedent": "^1.5.3",
-    "fast-glob": "^3.3.2",
-    "fs-extra": "^11.2.0",
-    "slash": "^5.1.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/dedent": "^0.7.2",
-    "@types/fs-extra": "^11.0.4",
-    "@types/node": "^22.10.3",
-    "eslint": "^10.6.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^17.0.8",
-    "tsup": "^8.3.5",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.62.1"
-  },
-  "peerDependencies": {
-    "astro": "^7.0.0"
-  },
-  "lint-staged": {
-    "**/*.{js,ts}": "eslint --max-warnings 0"
-  }
 }
