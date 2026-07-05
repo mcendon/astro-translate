@@ -1,5 +1,3 @@
-# 🗣 `astro-translate` The translation integration for Astro 🚀
-
 <p align="center">
   <a href="https://github.com/mcendon/astro-translate#readme" target="_blank">
     <picture>
@@ -7,6 +5,8 @@
     </picture>
   </a>
 </p>
+
+# `astro-translate`: Integrate i18n in Astro 🗣🚀
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@mcendon/astro-translate"><img src="https://img.shields.io/npm/dt/@mcendon/astro-translate.svg" alt="Total Downloads"></a>
