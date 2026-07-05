@@ -1,5 +1,5 @@
 {
-  "name": "@mcendon/astro-translate",
+  "name": "@mcorg/astro-translate",
   "version": "1.0.2",
   "private": false,
   "description": "The translate integration for Astro",

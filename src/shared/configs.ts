@@ -46,11 +46,17 @@ export interface UserI18nConfig {
    * @defaultValue true
    */
   redirectDefaultLocale?: boolean | ValidRedirectStatus
+  /**
+   * path to the translation files, relative to project root
+   *
+   * @defaultValue "src/i18n"
+   */
+  translations?: string
 }
 
 export type VirtualAstroi18nautConfig = Pick<
   UserI18nConfig,
-  'defaultLocale' | 'locales' | 'redirectDefaultLocale'
+  'defaultLocale' | 'locales' | 'redirectDefaultLocale' | 'translations'
 > & {
   BASE_URL: string
   trailingSlash: AstroConfig['trailingSlash']
@@ -80,4 +86,5 @@ export const defaultI18nConfig: Required<PartialFieldsOnly<UserI18nConfig>> = {
   include: ['pages/**/*'],
   exclude: ['pages/api/**/*'],
   redirectDefaultLocale: 308,
+  translations: 'src/i18n',
 }

@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://github.com/mcendon/astro-translate#readme" target="_blank">
     <picture>
-      <img alt="@mcendon/astro-translate" src="https://raw.githubusercontent.com/mcendon/astro-translate/main/logos/astro-translate.png" width="400" height="400" style="max-width: 100%;">
+      <img alt="@mcorg/astro-translate" src="https://raw.githubusercontent.com/mcendon/astro-translate/main/logos/astro-translate.png" width="400" height="400" style="max-width: 100%;">
     </picture>
   </a>
 </p>
@@ -9,10 +9,10 @@
 # `astro-translate`: Integrate i18n in Astro 🗣🚀
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@mcendon/astro-translate"><img src="https://img.shields.io/npm/dt/@mcendon/astro-translate.svg" alt="Total Downloads"></a>
-  <!-- https://github.com/@mcendon/astro-translate/@mcendon/astro-translate/releases -->
-  <a href="https://www.npmjs.com/package/@mcendon/astro-translate?activeTab=versions"><img src="https://img.shields.io/npm/v/@mcendon/astro-translate.svg" alt="Latest Release"></a>
-  <a href="https://github.com/mcendon/astro-translate/blob/main/LICENSE.md"><img src="https://img.shields.io/npm/l/@mcendon/astro-translate" alt="License"></a>
+  <a href="https://www.npmjs.com/package/@mcorg/astro-translate"><img src="https://img.shields.io/npm/dt/@mcorg/astro-translate.svg" alt="Total Downloads"></a>
+  <!-- https://github.com/@mcorg/astro-translate/@mcorg/astro-translate/releases -->
+  <a href="https://www.npmjs.com/package/@mcorg/astro-translate?activeTab=versions"><img src="https://img.shields.io/npm/v/@mcorg/astro-translate.svg" alt="Latest Release"></a>
+  <a href="https://github.com/mcendon/astro-translate/blob/main/LICENSE.md"><img src="https://img.shields.io/npm/l/@mcorg/astro-translate" alt="License"></a>
 </p>
 
 ---
@@ -32,10 +32,10 @@ Provide an internationalization (i18n) integration for Astro that:
 
 ### Install
 
-Install via [npm](https://www.npmjs.com/package/@mcendon/astro-translate):
+Install via [npm](https://www.npmjs.com/package/@mcorg/astro-translate):
 
 ```shell
-npm install @mcendon/astro-translate@latest
+npm install @mcorg/astro-translate@latest
 ```
 
 ### Configure
@@ -47,7 +47,7 @@ import { defineConfig } from 'astro/config'
 import {
   i18n,
   filterSitemapByDefaultLocale,
-} from '@mcendon/astro-translate/integration'
+} from '@mcorg/astro-translate/integration'
 import sitemap from '@astrojs/sitemap'
 
 const defaultLocale = 'en'
@@ -67,6 +67,7 @@ export default defineConfig({
     i18n({
       locales,
       defaultLocale,
+      translations: './src/i18n/', // optional, defaults to 'src/i18n'
     }),
     sitemap({
       i18n: {
@@ -109,7 +110,7 @@ It is up to you to detect which language is being rendered. You can use Astro [c
 
 ```astro
 ---
-import { getLocale } from "@mcendon/astro-translate";
+import { getLocale } from "@mcorg/astro-translate";
 import Layout from "../layouts/Layout.astro";
 
 const locale = getLocale(Astro.url);
@@ -136,7 +137,7 @@ Several helper functions are included to make handling locales easier.
 
 ### `getTranslateHelper(locale)`
 
-Provides a `t()` translate function for server-rendered pages using JSON translation files. Drop your translation files as `src/i18n/{locale}.json` and the helper will load them eagerly at build time.
+Provides a `t()` translate function for server-rendered pages using JSON translation files. Drop your translation files as `{translations}/{locale}.json` (configurable via the `translations` integration option, defaults to `src/i18n`) and the helper will load them eagerly at build time.
 
 ```json
 // src/i18n/en.json
@@ -148,7 +149,7 @@ Provides a `t()` translate function for server-rendered pages using JSON transla
 
 ```astro
 ---
-import { getLocale, getTranslateHelper } from "@mcendon/astro-translate";
+import { getLocale, getTranslateHelper } from "@mcorg/astro-translate";
 import Layout from "../layouts/Layout.astro";
 
 const locale = getLocale(Astro.url);
@@ -215,6 +216,7 @@ If you choose `/about/`, then `/about` will 404 and vice versa.
 - `redirectDefaultLocale` - Assuming the `defaultLocale: "en"`, whether `/en/about/` redirects to `/about/` (default: `308`).
 - `include`: Glob pattern(s) to include (default: `["pages/**/*"]`).
 - `exclude`: Glob pattern(s) to exclude (default: `["pages/api/**/*"]`).
+- `translations`: Path to translation files relative to project root (default: `"src/i18n"`).
 
 ### Compatibility
 
