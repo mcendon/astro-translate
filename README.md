@@ -1,11 +1,11 @@
-# `astro-i18n-aut` The i18n integration for Astro 🧑‍🚀
+# `astro-translate` The i18n integration for Astro 🧑‍🚀
 
 <p align="center">
-  <a href="https://github.com/jlarmstrongiv/astro-i18n-aut#readme" target="_blank">
+  <a href="https://github.com/mcendon/astro-translate#readme" target="_blank">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jlarmstrongiv/astro-i18n-aut/main/logos/astro-i18n-aut-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jlarmstrongiv/astro-i18n-aut/main/logos/astro-i18n-aut-light.svg">
-      <img alt="astro-i18n-aut" src="https://raw.githubusercontent.com/jlarmstrongiv/astro-i18n-aut/HEAD/logos/astro-i18n-aut-light.svg" width="400" height="225" style="max-width: 100%;">
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mcendon/astro-translate/main/logos/astro-translate-dark.png">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mcendon/astro-translate/main/logos/astro-translate-light.png">
+      <img alt="@mcendon/astro-translate" src="https://raw.githubusercontent.com/mcendon/astro-translate/HEAD/logos/astro-translate-light.png" width="400" height="225" style="max-width: 100%;">
     </picture>
   </a>
 </p>
@@ -15,10 +15,10 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/astro-i18n-aut"><img src="https://img.shields.io/npm/dt/astro-i18n-aut.svg" alt="Total Downloads"></a>
-  <!-- https://github.com/astro-i18n-aut/astro-i18n-aut/releases -->
-  <a href="https://www.npmjs.com/package/astro-i18n-aut?activeTab=versions"><img src="https://img.shields.io/npm/v/astro-i18n-aut.svg" alt="Latest Release"></a>
-  <a href="https://github.com/jlarmstrongiv/astro-i18n-aut/blob/main/LICENSE.md"><img src="https://img.shields.io/npm/l/astro-i18n-aut.svg" alt="License"></a>
+  <a href="https://www.npmjs.com/package/@mcendon/astro-translate"><img src="https://img.shields.io/npm/dt/@mcendon/astro-translate.svg" alt="Total Downloads"></a>
+  <!-- https://github.com/@mcendon/astro-translate/@mcendon/astro-translate/releases -->
+  <a href="https://www.npmjs.com/package/@mcendon/astro-translate?activeTab=versions"><img src="https://img.shields.io/npm/v/@mcendon/astro-translate.svg" alt="Latest Release"></a>
+  <a href="https://github.com/mcendon/astro-translate/blob/main/LICENSE.md"><img src="https://img.shields.io/npm/l/@mcendon/astro-translate.svg" alt="License"></a>
 </p>
 
 ---
@@ -37,10 +37,10 @@ Provide an internationalization (i18n) integration for Astro that:
 
 ### Install
 
-Install via [npm](https://www.npmjs.com/package/astro-i18n-aut):
+Install via [npm](https://www.npmjs.com/package/@mcendon/astro-translate):
 
 ```shell
-npm install astro-i18n-aut
+npm install @mcendon/astro-translate
 ```
 
 ### Configure
@@ -48,22 +48,25 @@ npm install astro-i18n-aut
 In your Astro [config](https://docs.astro.build/en/guides/configuring-astro/#supported-config-file-types) file:
 
 ```ts
-import { defineConfig } from "astro/config";
-import { i18n, filterSitemapByDefaultLocale } from "astro-i18n-aut/integration";
-import sitemap from "@astrojs/sitemap";
+import { defineConfig } from 'astro/config'
+import {
+  i18n,
+  filterSitemapByDefaultLocale,
+} from '@mcendon/astro-translate/integration'
+import sitemap from '@astrojs/sitemap'
 
-const defaultLocale = "en";
+const defaultLocale = 'en'
 const locales = {
-  en: "en-US", // the `defaultLocale` value must present in `locales` keys
-  es: "es-ES",
-  fr: "fr-CA",
-};
+  en: 'en-US', // the `defaultLocale` value must present in `locales` keys
+  es: 'es-ES',
+  fr: 'fr-CA',
+}
 
 export default defineConfig({
-  site: "https://example.com/",
-  trailingSlash: "always",
+  site: 'https://example.com/',
+  trailingSlash: 'always',
   build: {
-    format: "directory",
+    format: 'directory',
   },
   integrations: [
     i18n({
@@ -78,7 +81,7 @@ export default defineConfig({
       filter: filterSitemapByDefaultLocale({ defaultLocale }),
     }),
   ],
-});
+})
 ```
 
 In your `.gitignore` file:
@@ -111,7 +114,7 @@ It is up to you to detect which language is being rendered. You can use Astro [c
 
 ```astro
 ---
-import { getLocale } from "astro-i18n-aut";
+import { getLocale } from "@mcendon/astro-translate";
 import Layout from "../layouts/Layout.astro";
 
 const locale = getLocale(Astro.url);
@@ -196,7 +199,7 @@ Other Astro page file types:
 cannot be translated. If you choose to use them in the `pages` directory, please add them to the ignore glob patterns. For example:
 
 ```js
-["pages/api/**/*", "pages/**/*.md"];
+;['pages/api/**/*', 'pages/**/*.md']
 ```
 
 #### Excluding pages
@@ -212,7 +215,7 @@ Unfortunately, this [excluding pages](https://docs.astro.build/en/core-concepts/
 You can still exclude pages prefixed with an underscore (`_`) by adding `pages/**/_*` to the ignore glob patterns:
 
 ```js
-["pages/api/**/*", "pages/**/_*"];
+;['pages/api/**/*', 'pages/**/_*']
 ```
 
 #### Markdown
@@ -262,4 +265,4 @@ MIT Licensed
 
 ## Contributing
 
-PRs welcome! Thank you for your help. Read more in the [contributing guide](https://github.com/jlarmstrongiv/astro-i18n-aut/blob/main/CONTRIBUTING.md) for reporting bugs and making PRs.
+PRs welcome! Thank you for your help. Read more in the [contributing guide](https://github.com/mcendon/astro-translate/blob/main/CONTRIBUTING.md) for reporting bugs and making PRs.
