@@ -1,6 +1,6 @@
 import { defaultLocale } from './config'
 
-type TranslationMap = Record<string, unknown>
+type TranslationMap = Record<string, string>
 
 const translationsByLocale: Record<string, TranslationMap> = {}
 
@@ -38,7 +38,7 @@ function getTranslationValue(
 
   // 2. Try nested path traversal (e.g. "hello.message")
   const parts = key.split('.')
-  let current: Record<string, unknown> | undefined = translations
+  let current: TranslationMap | string = translations
   for (const part of parts) {
     if (current && typeof current === 'object' && part in current) {
       current = current[part]
