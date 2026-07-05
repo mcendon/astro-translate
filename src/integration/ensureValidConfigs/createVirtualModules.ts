@@ -23,7 +23,7 @@ export function createVirtualModules(
   }
 
   const virtualPlugin = createVirtualPlugin(
-    'virtual:@mcendon/astro-translate',
+    'virtual:@mcorg/astro-translate',
     virtualAstroi18nautConfig
   )
 
@@ -36,7 +36,7 @@ export function createVirtualModules(
       },
       // exclude virtual modules from optimizeDeps https://github.com/storybookjs/builder-vite/issues/311#issuecomment-1092577628
       optimizeDeps: {
-        exclude: ['virtual:@mcendon/astro-translate'],
+        exclude: ['virtual:@mcorg/astro-translate'],
       },
     },
   })

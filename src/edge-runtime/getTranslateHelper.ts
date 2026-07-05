@@ -1,15 +1,17 @@
 import { defaultLocale } from './config'
+import virtualTranslations from 'virtual:@mcorg/astro-translate/translations'
 
 type TranslationMap = Record<string, string>
 
 const translationsByLocale: Record<string, TranslationMap> = {}
 
-const modules = import.meta.glob<{ default: TranslationMap }>(
-  '/src/i18n/*.json',
-  {
-    eager: true,
-  }
-)
+// The virtual module 'virtual:@mcorg/astro-translate/translations' is a glob import
+// handled by the integration's virtual module plugin.
+// It resolves to the user's translation files.
+const modules = virtualTranslations as Record<
+  string,
+  { default: TranslationMap }
+>
 
 for (const [filePath, module] of Object.entries(modules)) {
   // Extract filename without extension as the locale name (e.g., "../i18n/en.json" -> "en")

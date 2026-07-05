@@ -1,4 +1,4 @@
-import virtualConfig from 'virtual:@mcendon/astro-translate'
+import virtualConfig from 'virtual:@mcorg/astro-translate'
 
 export const trailingSlash = virtualConfig.trailingSlash
 export const BASE_URL = virtualConfig.BASE_URL ? virtualConfig.BASE_URL : '/'

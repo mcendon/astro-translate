@@ -1,6 +1,10 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { AstroIntegration, AstroIntegrationLogger } from 'astro'
+import type {
+  AstroIntegration,
+  AstroIntegrationLogger,
+  ViteUserConfig,
+} from 'astro'
 import fg from 'fast-glob'
 import fs from 'fs-extra'
 import slash from 'slash'
@@ -15,7 +19,7 @@ import { ensureValidConfigs } from './ensureValidConfigs'
 /**
  * The i18n integration for Astro
  *
- * See the full [@mcendon/astro-translate](https://github.com/mcendon/astro-translate#readme) documentation
+ * See the full [@mcorg/astro-translate](https://github.com/mcendon/astro-translate#readme) documentation
  */
 export function i18n(userI18nConfig: UserI18nConfig): AstroIntegration {
   const i18nConfig: I18nConfig = Object.assign(
@@ -23,8 +27,14 @@ export function i18n(userI18nConfig: UserI18nConfig): AstroIntegration {
     userI18nConfig
   )
 
-  const { defaultLocale, locales, exclude, include, redirectDefaultLocale } =
-    i18nConfig
+  const {
+    defaultLocale,
+    locales,
+    exclude,
+    include,
+    redirectDefaultLocale,
+    translations,
+  } = i18nConfig
 
   const pagesPathTmp: Record<string, string> = {}
   async function removePagesPathTmp(): Promise<void> {
@@ -47,8 +57,34 @@ export function i18n(userI18nConfig: UserI18nConfig): AstroIntegration {
         ensureValidLocales(locales, defaultLocale, logger)
         await ensureValidConfigs(config, updateConfig, i18nConfig, logger)
         addMiddleware({
-          entrypoint: '@mcendon/astro-translate/middleware',
+          entrypoint: '@mcorg/astro-translate/middleware',
           order: 'pre',
+        })
+
+        const viteConfig: ViteUserConfig = {
+          plugins: [
+            {
+              name: 'vite-plugin-astro-translate-translations',
+              resolveId(id) {
+                if (id === 'virtual:@mcorg/astro-translate/translations') {
+                  return '\0virtual:@mcorg/astro-translate/translations'
+                }
+                return undefined
+              },
+              load(id) {
+                if (id === '\0virtual:@mcorg/astro-translate/translations') {
+                  // Use an absolute path from the project root for import.meta.glob
+                  const globPath = `/${path.posix.join(translations, '*.json')}`
+                  return `export default import.meta.glob('${globPath}', { eager: true });`
+                }
+                return undefined
+              },
+            },
+          ],
+        }
+
+        updateConfig({
+          vite: viteConfig,
         })
 
         const configSrcDirPathname = fileURLToPath(config.srcDir)

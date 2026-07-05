@@ -11,7 +11,7 @@ const mock = vi.hoisted(() => ({
   },
 }))
 
-vi.mock('virtual:@mcendon/astro-translate', () => mock)
+vi.mock('virtual:@mcorg/astro-translate', () => mock)
 
 describe('resolveTrailingSlash', () => {
   beforeEach(() => {
