@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 
 const mock = vi.hoisted(() => ({
   default: {
-    trailingSlash: 'never' as const,
+    trailingSlash: 'never',
     BASE_URL: '/',
     defaultLocale: 'en',
     locales: { en: 'English', es: 'Español', fr: 'Français' },

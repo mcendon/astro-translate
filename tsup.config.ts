@@ -25,7 +25,7 @@ export default defineConfig(async (options) => {
     outDir: 'dist',
     shims: true,
     silent: !options.watch,
-    sourcemap: true,
+    sourcemap: false,
     splitting: false,
   }
 })
