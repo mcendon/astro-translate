@@ -93,6 +93,6 @@
     "**/*.{js,ts}": "eslint --max-warnings 0"
   },
   "engines": {
-    "node": ">=24.0.0"
+    "node": ">=22.12.0"
   }
 }

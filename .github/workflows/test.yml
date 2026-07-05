@@ -1,5 +1,6 @@
 name: Test
-
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 on: push
 
 jobs:
@@ -12,10 +13,10 @@ jobs:
       - name: Setup Node ⚙️
         uses: actions/setup-node@v4
         with:
-          node-version-file: ".tool-versions"
+          node-version-file: '.tool-versions'
           cache: npm
-          cache-dependency-path: "package-lock.json"
-          registry-url: "https://registry.npmjs.org"
+          cache-dependency-path: 'package-lock.json'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies 🔧
         # include devDependencies https://stackoverflow.com/a/64648870
