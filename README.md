@@ -1,24 +1,18 @@
-# `astro-translate` The i18n integration for Astro 🧑‍🚀
+# 🗣 `astro-translate` The translation integration for Astro 🚀
 
 <p align="center">
   <a href="https://github.com/mcendon/astro-translate#readme" target="_blank">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mcendon/astro-translate/main/logos/astro-translate-dark.png">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mcendon/astro-translate/main/logos/astro-translate-light.png">
-      <img alt="@mcendon/astro-translate" src="https://raw.githubusercontent.com/mcendon/astro-translate/HEAD/logos/astro-translate-light.png" width="400" height="225" style="max-width: 100%;">
+      <img alt="@mcendon/astro-translate" src="https://raw.githubusercontent.com/mcendon/astro-translate/main/logos/astro-translate.png" width="400" height="400" style="max-width: 100%;">
     </picture>
   </a>
-</p>
-
-<p align="center">
-  Built with ❤️ for all Astro crewmates 🧑‍🚀
 </p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@mcendon/astro-translate"><img src="https://img.shields.io/npm/dt/@mcendon/astro-translate.svg" alt="Total Downloads"></a>
   <!-- https://github.com/@mcendon/astro-translate/@mcendon/astro-translate/releases -->
   <a href="https://www.npmjs.com/package/@mcendon/astro-translate?activeTab=versions"><img src="https://img.shields.io/npm/v/@mcendon/astro-translate.svg" alt="Latest Release"></a>
-  <a href="https://github.com/mcendon/astro-translate/blob/main/LICENSE.md"><img src="https://img.shields.io/npm/l/@mcendon/astro-translate.svg" alt="License"></a>
+  <a href="https://github.com/mcendon/astro-translate/blob/main/LICENSE.md"><img src="https://img.shields.io/npm/l/@mcendon/astro-translate" alt="License"></a>
 </p>
 
 ---
@@ -32,6 +26,7 @@ Provide an internationalization (i18n) integration for Astro that:
 - Is adapter agnostic
 - Is UI framework agnostic
 - Is compatible with [`@astrojs/sitemap`](https://www.npmjs.com/package/@astrojs/sitemap)
+- Is compatible with [Astro 7.0](https://astro.build/blog/astro-7/) and [Vite 8](https://vite.dev/blog/announcing-vite8)
 
 ## Quick start
 
@@ -40,7 +35,7 @@ Provide an internationalization (i18n) integration for Astro that:
 Install via [npm](https://www.npmjs.com/package/@mcendon/astro-translate):
 
 ```shell
-npm install @mcendon/astro-translate
+npm install @mcendon/astro-translate@latest
 ```
 
 ### Configure
@@ -138,6 +133,43 @@ switch (locale) {
 ```
 
 Several helper functions are included to make handling locales easier.
+
+### `getTranslateHelper(locale)`
+
+Provides a `t()` translate function for server-rendered pages using JSON translation files. Drop your translation files as `src/i18n/{locale}.json` and the helper will load them eagerly at build time.
+
+```json
+// src/i18n/en.json
+{
+  "greeting": "Hello!",
+  "nested.welcome": "Welcome {{name}}"
+}
+```
+
+```astro
+---
+import { getLocale, getTranslateHelper } from "@mcendon/astro-translate";
+import Layout from "../layouts/Layout.astro";
+
+const locale = getLocale(Astro.url);
+const t = getTranslateHelper(locale);
+---
+
+<Layout title={t("greeting")}>
+  <!-- Supports interpolation using {{name}} -->
+  <h1>{t("nested.welcome", { name: "World" })}</h1>
+</Layout>
+
+<!--
+  <h1>Welcome World</h1>
+-->
+```
+
+Resolution priority for a given key:
+
+1. The locale's translation file
+2. The `defaultLocale` translation file (fallback)
+3. The raw key itself (if neither file contains it)
 
 ### Astro config options
 
