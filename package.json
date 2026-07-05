@@ -42,17 +42,17 @@
     ".": {
       "types": "./dist/edge-runtime/index.d.ts",
       "require": "./dist/edge-runtime/index.cjs",
-      "import": "./dist/edge-runtime/index.js"
+      "import": "./dist/edge-runtime/index.mjs"
     },
     "./integration": {
       "types": "./dist/integration/index.d.ts",
       "require": "./dist/integration/index.cjs",
-      "import": "./dist/integration/index.js"
+      "import": "./dist/integration/index.mjs"
     },
     "./middleware": {
       "types": "./dist/middleware/index.d.ts",
       "require": "./dist/middleware/index.cjs",
-      "import": "./dist/middleware/index.js"
+      "import": "./dist/middleware/index.mjs"
     },
     "./package.json": "./package.json"
   },
@@ -60,8 +60,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup-node",
-    "watch": "tsup-node --watch",
+    "build": "tsdown",
+    "watch": "tsdown --watch",
     "lint": "eslint .",
     "test": "vitest run ./src",
     "prepare": "husky",
@@ -82,7 +82,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^17.0.8",
     "prettier": "^3.9.4",
-    "tsup": "^8.3.5",
+    "tsdown": "^0.22.3",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.62.1",
     "vitest": "^4.1.9"
