@@ -1,4 +1,4 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from 'tsup'
 
 // __filename and __dirname shims
 // - https://github.com/egoist/tsup/search?q=__filename
@@ -9,11 +9,11 @@ export default defineConfig(async (options) => {
     clean: true,
     dts: false,
     entry: [
-      "src/integration/index.ts",
-      "src/edge-runtime/index.ts",
-      "src/middleware/index.ts",
+      'src/integration/index.ts',
+      'src/edge-runtime/index.ts',
+      'src/middleware/index.ts',
     ],
-    format: ["esm", "cjs"],
+    format: ['esm', 'cjs'],
     // FUTURE: incremental builds when implemented https://github.com/egoist/tsup/issues/615
     // incremental: !options.watch,
     keepNames: true,
@@ -21,11 +21,11 @@ export default defineConfig(async (options) => {
     minifySyntax: !options.watch,
     minifyWhitespace: !options.watch,
     onSuccess:
-      "tsc --emitDeclarationOnly --declaration --declarationMap --declarationDir ./dist",
-    outDir: "dist",
+      'tsc --emitDeclarationOnly --declaration --declarationMap --declarationDir ./dist',
+    outDir: 'dist',
     shims: true,
     silent: !options.watch,
-    sourcemap: true,
+    sourcemap: false,
     splitting: false,
-  };
-});
+  }
+})

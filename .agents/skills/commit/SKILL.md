@@ -4,16 +4,19 @@ description: Create well-formatted git commits following conventional commit sta
 ---
 
 ## Usage
+
 ```
 /commit
 ```
 
 ## Behavior
+
 1. Analyze staged changes with `git diff --staged`
 2. Generate a conventional commit message
 3. Create the commit with proper formatting
 
 ## Commit Format
+
 ```
 <type>(<scope>): <description>
 
@@ -23,6 +26,7 @@ description: Create well-formatted git commits following conventional commit sta
 ```
 
 ## Types
+
 - feat: New feature
 - fix: Bug fix
 - docs: Documentation changes
@@ -32,6 +36,7 @@ description: Create well-formatted git commits following conventional commit sta
 - chore: Maintenance tasks
 
 ## Example Output
+
 ```
 feat(auth): add password reset functionality
 
