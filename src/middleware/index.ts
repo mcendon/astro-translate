@@ -1,3 +1,3 @@
-import { i18nMiddleware } from "../edge-runtime/middleware";
+import { i18nMiddleware } from '../edge-runtime/middleware'
 
-export const onRequest = i18nMiddleware;
+export const onRequest = i18nMiddleware

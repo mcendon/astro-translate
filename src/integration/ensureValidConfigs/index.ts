@@ -1,1 +1,1 @@
-export { ensureValidConfigs } from "./ensureValidConfigs";
+export { ensureValidConfigs } from './ensureValidConfigs'
