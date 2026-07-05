@@ -1,10 +1,10 @@
 export {
-    defaultLocale,
-    locales,
-    localeKeys,
-    trailingSlash,
-    build,
-    BASE_URL,
+  defaultLocale,
+  locales,
+  localeKeys,
+  trailingSlash,
+  build,
+  BASE_URL,
 } from './config'
 export { filterCollectionByDefaultLocale } from './filterCollectionByDefaultLocale'
 export { getCollectionParamsSlug } from './getCollectionParamsSlug'
@@ -17,6 +17,6 @@ export { resolveTrailingSlash } from './resolveTrailingSlash'
 export { getTranslateHelper } from './getTranslateHelper'
 export { defaultI18nConfig } from '../shared'
 export type {
-    UserI18nConfig,
-    UserFilterSitemapByDefaultLocaleConfig,
+  UserI18nConfig,
+  UserFilterSitemapByDefaultLocaleConfig,
 } from '../shared'
